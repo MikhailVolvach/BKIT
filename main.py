@@ -32,14 +32,13 @@ def get_coef(index, prompt):
     return coef_str
 
 
-def add_root(root_t, result, D_is_zero):
+def add_root(root_t, result):
     """
     Добавление корней биквадратного уравнения
 
     Args:
         root_t (float): корень квадратного уравнение A*t^2 + B*t + C = 0
         result (list[float]): список корней
-        D_is_zero (bool): флаг нулевого дискриминанта
 
     Returns:
         list[float]: Список корней
@@ -48,16 +47,10 @@ def add_root(root_t, result, D_is_zero):
     if root_t == 0:
         result.append(0)
 
-    if D_is_zero:
-        if root_t > 0:
-            root = math.sqrt(root_t)
-            result.append(root)
-
-    else:
-        if root_t > 0:
-            root1 = math.sqrt(root_t)
-            result.append(root1)
-            result.append(-root1)
+    if root_t > 0:
+        root1 = math.sqrt(root_t)
+        result.append(root1)
+        result.append(-root1)
 
     return result
 
@@ -81,7 +74,7 @@ def get_roots(a, b, c):
 
     if D == 0.0:
         root_t = -b / (2.0 * a)
-        result = add_root(root_t, result, D == 0.0)
+        result = add_root(root_t, result)
 
     elif D > 0.0:
         sqD = math.sqrt(D)
@@ -89,8 +82,8 @@ def get_roots(a, b, c):
         root_t1 = (-b + sqD) / (2.0 * a)
         root_t2 = (-b - sqD) / (2.0 * a)
 
-        result = add_root(root_t1, result, D == 0.0)
-        result = add_root(root_t2, result, D == 0.0)
+        result = add_root(root_t1, result)
+        result = add_root(root_t2, result)
 
     return result
 
@@ -110,13 +103,13 @@ def main():
     if len_roots == 0:
         print('Нет корней')
     elif len_roots == 1:
-        print('Один корень: {}'.format(roots[0]))
+        print('Один корень: {:.2f}'.format(roots[0]))
     elif len_roots == 2:
-        print('Два корня: {} и {}'.format(roots[0], roots[1]))
+        print('Два корня: {:.2f} и {:.2f}'.format(roots[0], roots[1]))
     elif len_roots == 3:
-        print('Три корня: {}, {} и {}'.format(roots[0], roots[1], roots[2]))
+        print('Три корня: {:.2f}, {:.2f} и {:.2f}'.format(roots[0], roots[1], roots[2]))
     elif len_roots == 4:
-        print('Четыре корня: {}, {}, {} и {}'.format(roots[0], roots[1], roots[2], roots[3]))
+        print('Четыре корня: {:.2f}, {:.2f}, {:.2f} и {:.2f}'.format(roots[0], roots[1], roots[2], roots[3]))
 
 
 # Если сценарий запущен из командной строки
