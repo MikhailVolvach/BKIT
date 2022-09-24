@@ -1,10 +1,10 @@
-import Figure
+from lab_python_oop.Figure import Figure
 from lab_python_oop.FigureColor import FigureColor
 
 
-class Rectangle:
+class Rectangle(Figure):
     """
-    Класс "Квадрат"
+    Класс "Прямоугольник"
     """
     FIGURE_TYPE = "Прямоугольник"
 
@@ -30,7 +30,7 @@ class Rectangle:
         return self.width * self.height
 
     def __repr__(self):
-        return '{} {} цвета шириной {} и высотой {} площадью {}.'.format(
+        return '{} {} цвета, шириной {} и высотой {}, площадью {}.'.format(
             Rectangle.get_figure_type(),
             self.fc.color_property,
             self.width,
