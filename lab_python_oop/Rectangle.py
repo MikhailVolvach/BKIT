@@ -30,7 +30,7 @@ class Rectangle(Figure):
         return self.width * self.height
 
     def __repr__(self):
-        return '{} {} цвета, шириной {} и высотой {}, площадью {}.'.format(
+        return '{} {} цвета, шириной {} и высотой {}, площадью {:.3f}.'.format(
             Rectangle.get_figure_type(),
             self.fc.color_property,
             self.width,
