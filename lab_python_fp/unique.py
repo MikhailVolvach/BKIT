@@ -12,9 +12,14 @@ class Unique(object):
 
     # Unique([1, 1, 1, 1, 1, 2, 2, 2, 2, 2]) -> [1, 2]
     def __next__(self):
+        print(self._ignore_case)
         result = []
         for elem in self._data:
-            if type
+            print('before = ', elem, type(elem))
+            elem = elem.lower() if type(elem) == 'str' and self._ignore_case else elem
+            print('after = ', elem)
+            if type(elem) == 'String':
+                elem.lower()
             if elem not in result:
                 result.append(elem)
         # return [elem for elem in self._data]
