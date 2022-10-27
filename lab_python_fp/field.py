@@ -12,4 +12,4 @@ def field(items, *args):
         else:
             res.append(item[args[0]])
 
-    print(res)
+    return res

@@ -14,15 +14,15 @@ def main():
     #     {'title': 'Диван для отдыха', 'color': 'black'}
     # ]
 
-    field(goods, 'title')
+    print(field(goods, 'title'))
     # print()
-    field(goods, "title", "price")
+    print(field(goods, "title", "price"))
     # print()
-    field(goods, "title", "price", "color")
+    print(field(goods, "title", "price", "color"))
     # gen_random(5, 1, 3)
     data = ['a', 'A', 'b', 'B', 'a', 'A', 'b', 'B']
     print(Unique(data, ignore_case=True).__next__())
-    Unique(data)
+    print(Unique(data).__next__())
 
 
 if __name__ == "__main__":

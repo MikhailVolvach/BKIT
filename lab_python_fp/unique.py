@@ -1,4 +1,7 @@
 # Итератор для удаления дубликатов
+import string
+
+
 class Unique(object):
     def __init__(self, items, **kwargs):
         # Нужно реализовать конструктор
@@ -12,17 +15,13 @@ class Unique(object):
 
     # Unique([1, 1, 1, 1, 1, 2, 2, 2, 2, 2]) -> [1, 2]
     def __next__(self):
-        print(self._ignore_case)
         result = []
         for elem in self._data:
-            print('before = ', elem, type(elem))
-            elem = elem.lower() if type(elem) == 'str' and self._ignore_case else elem
-            print('after = ', elem)
+            elem = elem.lower() if type(elem) == str and self._ignore_case else elem
             if type(elem) == 'String':
                 elem.lower()
             if elem not in result:
                 result.append(elem)
-        # return [elem for elem in self._data]
         return result
 
     def __iter__(self):
