@@ -1,8 +1,10 @@
-data = [4, -30, 30, 100, -100, 123, 1, 0, -1, -4]  # -> [123, 100, -100, -30, 30, 4, -4, 1, -1, 0]
+def sort(data, reverse=False):
+    for i in range(len(data)):
+        minimum = i
 
-if __name__ == "__main__":
-    result = ''
-    print(result)
+        for j in range(i + 1, len(data)):
+            if data[j] < data[minimum]:
+                minimum = j
 
-    result_with_lambda = lambda a, b:
-    print(result_with_lambda)
+        data[minimum], data[i] = data[i], data[minimum]
+    return data[::-1] if reverse else data

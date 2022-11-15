@@ -1,7 +1,3 @@
-# Итератор для удаления дубликатов
-import string
-
-
 class Unique(object):
     def __init__(self, items, **kwargs):
         # Нужно реализовать конструктор
@@ -18,8 +14,6 @@ class Unique(object):
         result = []
         for elem in self._data:
             elem = elem.lower() if type(elem) == str and self._ignore_case else elem
-            if type(elem) == 'String':
-                elem.lower()
             if elem not in result:
                 result.append(elem)
         return result

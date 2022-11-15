@@ -1,6 +1,8 @@
+from print_result import print_result
+
+@print_result
 def field(items, *args):
     assert len(args) > 0
-    res = []
 
     for item in items:
         tmp_res = {}
@@ -8,8 +10,8 @@ def field(items, *args):
         if len(args) > 1:
             for arg in args:
                 tmp_res[arg] = item[arg]
-            res.append(tmp_res)
+            yield tmp_res
         else:
-            res.append(item[args[0]])
+            yield item[args[0]]
+   
 
-    return res
