@@ -26,17 +26,14 @@ def f1(arg):
 # def filter_func(elem):
 
 
-@print_result
+# @print_result
 def f2(arg):
     return list(filter(lambda a: "программист" == a.split()[0].strip(), arg))
-#    print(res)
- #   for i in res:
-  #      print(i)
 
 
 @print_result
 def f3(arg):
-    raise NotImplemented
+    return [item + " с опытом Python" for item in arg]
 
 
 @print_result
@@ -46,7 +43,7 @@ def f4(arg):
 
 if __name__ == "__main__":
     with Cm_timer_1():
-        f2(f1(data))
+        f3(f2(f1(data)))
 
         
 
