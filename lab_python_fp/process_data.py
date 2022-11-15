@@ -16,33 +16,22 @@ path_to_write = "../files/tmp_res.json"
 
 with open(path) as f:
     data = json.load(f)
-    print(type(data))
-    # print(len(data))
 
 
-@print_result
+# @print_result
 def f1(arg):
-    data = [i["job-name"] for i in arg]
+    return sort(Unique([i["job-name"] for i in arg], ignore_case = True).__next__())
+    
 
-    print("Список должностей")
-    unique = sort(Unique(data, ignore_case = True).__next__())
-    
-    # Запись результата в файл tmp_res.json
-    to_json = {"data": unique}
-    with open(path_to_write, "w") as file:
-        json.dump(to_json,
-                  file,
-                  sort_keys=True,
-                  indent=2,
-                  ensure_ascii=False # Необходимо для записи русских букв в JSON файл
-                  ) 
-        print("writing proccess is done")
-    
-    return unique
+# def filter_func(elem):
+
 
 @print_result
 def f2(arg):
-    raise NotImplemented
+    return list(filter(lambda a: "программист" == a.split()[0].strip(), arg))
+#    print(res)
+ #   for i in res:
+  #      print(i)
 
 
 @print_result
@@ -57,5 +46,7 @@ def f4(arg):
 
 if __name__ == "__main__":
     with Cm_timer_1():
-        f1(data)
+        f2(f1(data))
+
+        
 
