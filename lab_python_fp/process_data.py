@@ -31,19 +31,21 @@ def f2(arg):
     return list(filter(lambda a: "программист" == a.split()[0].strip(), arg))
 
 
-@print_result
+# @print_result
 def f3(arg):
     return [item + " с опытом Python" for item in arg]
 
 
 @print_result
 def f4(arg):
-    raise NotImplemented
+    sals = [gen_random(1, 100000, 200000) for _ in range(len(arg))]
+    res_list = list(zip(arg, sals)) 
+    return [i[0] + ", с зарплатой " + str(i[1]) + " руб." for i in res_list]
 
 
 if __name__ == "__main__":
     with Cm_timer_1():
-        f3(f2(f1(data)))
+        f4(f3(f2(f1(data))))
 
         
 
