@@ -7,7 +7,7 @@ from sort import sort
 from unique import Unique
 
 
-path = "../files/data_light.json"
+path = "/Users/mikhail/Documents/BKIT/Lab1/files/data_light.json"
 path_to_write = "../files/tmp_res.json"
 
 
