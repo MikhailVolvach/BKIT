@@ -9,6 +9,12 @@ m class Unique(object):
         self._data = items
         self._ignore_case = kwargs['ignore_case'] if 'ignore_case' in kwargs.keys() else False
 
+    def add_data(self, data):
+        self._data = data
+
+    def add_ignore_case(self, ignore_case):
+        self._ignore_case = ignore_case
+
     # Unique([1, 1, 1, 1, 1, 2, 2, 2, 2, 2]) -> [1, 2]
     def __next__(self):
         result = []
