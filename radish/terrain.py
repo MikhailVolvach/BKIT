@@ -1,10 +1,10 @@
 from radish import before, after
 
-from lab_python_fp import Unique
+import lab_python_fp.unique as unique
 
 @before.each_scenario
 def init_unique(scenario):
-    scenario.context.unique = Unique()
+    scenario.context.unique = unique.Unique()
 
 @after.each_scenario
 def destroy_unique(scenario):
