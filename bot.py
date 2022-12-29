@@ -21,46 +21,6 @@ dp = Dispatcher()
 form_router = Router()
 
 
-# @dp.message(commands=["start"])
-# async def cmd_start(message: Message):
-#     answer = text("Hello, I'm simple button bot",
-#                   "Author's [GitHub](https://github.com/MikhailVolvach)",
-#                   sep="\n")
-#     await message.answer(answer, parse_mode="MARKDOWN")
-
-
-# @dp.message(commands=["help"])
-# async def cmd_help(message: Message):
-#     await message.answer("Меню")
-
-
-# @dp.message(commands=["findItem"])
-# async def cmd_find_item(message: Message):
-#     await message.answer("Поиск")
-
-
-# @dp.message(content_types=ContentType.ANY)
-# async def echo_with_reply(message: types.Message):
-#
-#     markup = ReplyKeyboardBuilder()
-#     markup.add(
-#         KeyboardButton(text="Начать"),
-#         KeyboardButton(text="Закончить")
-#     )
-#
-# #    if mes == "Начать":
-# #        await message.answer("Начинаем")
-# #   elif mes == "Закончить":
-# #        await message.answer("Заканчиваем")
-# #    else:
-# #        markup = ReplyKeyboardBuilder()
-# #        markup.add(
-# #            KeyboardButton(text="Начать"),
-# #            KeyboardButton(text="Закончить")
-# #        )
-#     await message.answer("Пожалуйста, нажмите кнопку ", reply_markup=markup.as_markup())
-
-
 class Form(StatesGroup):
     resource = State()
 
@@ -105,12 +65,6 @@ async def form_cancel_handler(message: Message, state: FSMContext):
     )
 
 
-# @form_router.message(Form.resource)
-# async def process_resource(message: Message, state: FSMContext):
-#     await state.set_state()
-
-
-# @form_router.message(Form.resource, F.text.casefold() == "Posts")
 @form_router.message(Form.resource)
 async def process_posts(message: Message, state: FSMContext):
     await state.set_state(Form.resource)
@@ -138,58 +92,6 @@ async def process_posts(message: Message, state: FSMContext):
             resize_keyboard=True
         )
     )
-
-
-
-
-    # await state.set_state(Form.like_bots)
-    # await message.answer(
-    #     f"Nice to meet you, {aiogram.html.quote(message.text)}! \nDid do you want to know about this item?",
-    #     reply_markup=ReplyKeyboardMarkup(
-    #         keyboard=[
-    #             [
-    #                 KeyboardButton(text="Yes"),
-    #                 KeyboardButton(text="No")
-    #             ]
-    #         ],
-    #         resize_keyboard=True,
-    #     ),
-    # )
-
-
-# @form_router.message(Form.like_bots, F.text.casefold() == "no")
-# async def process_dont_like_write_bots(message: Message, state: FSMContext):
-#     data = await state.get_data()
-#     await state.clear()
-#     await message.answer(
-#         "Not bad not terrible. \nSee you soon.",
-#         reply_markup=ReplyKeyboardRemove()
-#     )
-#     await show_summary(message=message, data=data, positive=False)
-
-
-# @form_router.message(Form.like_bots, F.text.casefold() == "yes")
-# async def process_like_write_bots(message: Message, state: FSMContext):
-#     await message.reply(
-#         "Cool! I'm too!",
-#         reply_markup=ReplyKeyboardRemove()
-#     )
-#
-#
-# @form_router.message(Form.like_bots)
-# async def process_unknown_write_bots(message: Message, state: FSMContext):
-#     await message.reply("I don't understand you :(")
-#
-#
-# async def show_summary(message: Message, data: Dict[str, Any], positive: bool = True):
-#     name = data["name"]
-#     text = f"I'll keep in mind that, {aiogram.html.quote(name)}, "
-#     text += (
-#         "you like to write bots"
-#         if positive
-#         else "you don't like to write bots"
-#     )
-#     await message.answer(text=text, reply_markup=ReplyKeyboardRemove())
 
 
 async def main():
