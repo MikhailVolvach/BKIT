@@ -1,4 +1,4 @@
-m class Unique(object):
+class Unique(object):
     def __init__(self, items, **kwargs):
         # Нужно реализовать конструктор
         # В качестве ключевого аргумента, конструктор должен принимать bool-параметр ignore_case,
